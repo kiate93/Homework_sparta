@@ -1,0 +1,211 @@
+<html lang="en">
+<head>
+	<title>Homework1_상품기획서</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	<style>
+		.picture {
+
+			background-size: cover;
+			background-position: center;
+			width: 700px;
+			height: 400px;
+			border-radius: 10px;
+			margin: 15px auto 0 auto;
+
+		}
+
+		.wrap1 {
+			width: 1000px;
+			margin: 0 auto 0 auto;
+			border-style: double;
+
+		}
+
+		.wrap2 {
+			width: 940px;
+			margin: 30px 30px 30px 30px;
+		}
+		.wrap3{
+			width : 1000px;
+			background-position : center;
+			margin : 0 auto 0 auto;
+
+		}
+		.title1 {
+			width : 100px;
+		}
+		.title2 {
+			width : 200px;
+		}
+		.position {
+			width: 270px;
+			margin : 0 auto 0 auto;
+		}
+		.box {
+			width : 500px;
+
+		}
+
+		.size-small{font-size : 15px;}
+		.size-big{font-size : 30px; font-weight: bold;}
+		.size-med{font-size : 20px; font-weight: bold;}
+
+	</style>
+
+	<script>
+
+		function q1(){
+			$('#start').show();
+
+			$.ajax({
+	          type: "GET",
+	          url: "/order",
+	          data: {},
+	          success: function(response){
+	             let orders = response['orders'];
+	             for (let i = 0; i < orders.length; i++) {
+	               make_card(orders[i]['name'],orders[i]['count'],orders[i]['address'],orders[i]['phone'])
+	             }
+	          }
+	        })
+	      }
+
+
+
+		function q2() {
+			let Name = $('#Name').val();
+			let Count = $('#Number').val();
+			let Address = $('#Address').val();
+			let Phone = $('#Phone').val();
+
+			 $.ajax({
+	          type: "POST",
+	          url: "/order",
+	          data: {name_give:Name, number_give:Count, address_give:Address, phone_give:Phone},
+	          success: function(response){
+	            if(response['result'] == 'success'){
+	              alert('주문 완료!');
+	              window.location.reload();
+	            }
+	          }
+	        })
+		}
+	</script>
+
+
+</head>
+<body>
+	<div class = "wrap1">
+	<h7><p style = "text-align:right;">homework 2_J H Kim</p></h7></div>
+	<div class = "wrap1">
+		<div class = "picture">
+		<div id="myCarousel" class="carousel slide" data-ride="carousel">
+		  <ol class="carousel-indicators">
+		    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+		    <li data-target="#myCarousel" data-slide-to="1"></li>
+		    <li data-target="#myCarousel" data-slide-to="2"></li>
+		  </ol>
+
+		  <div class="carousel-inner">
+		    <div class="item active">
+		      <img src="https://blog.lgchem.com/wp-content/uploads/2018/03/19_plantpet_07.jpg" style ='width : 700px; height : 400px' alt="luckyTree1">
+		    </div>
+
+		    <div class="item">
+		      <img src="http://blogfiles.naver.net/MjAxNzA2MjVfMTEx/MDAxNDk4MzgxMjg2MTAy.bCPM3NixubSp6QXpsNyW0nLcT06XelLv8hl31-lT_mUg.Wj4VsunS3OaNg06_IHe9w8b7pHLu6xgnc8AawtlSo5Qg.JPEG.atelier_ramo/%C7%E0%BF%EE%B8%F11.JPG" style ='width : 700px; height : 400px' alt="luckyTree2">
+		    </div>
+
+		    <div class="item">
+		      <img src="http://lifegarden.godohosting.com/images/01.Notice/Set_HUM(770xDetail)Info.jpg" style ='width : 700px; height : 400px' alt="luckyTree3">
+		    </div>
+		  </div>
+
+		  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+		    <span class="glyphicon glyphicon-chevron-left"></span>
+		    <span class="sr-only">Previous</span>
+		  </a>
+		  <a class="right carousel-control" href="#myCarousel" data-slide="next">
+		    <span class="glyphicon glyphicon-chevron-right"></span>
+		    <span class="sr-only">Next</span>
+		  </a>
+		</div>
+
+		</div>
+
+		<div class = "wrap2">
+			<p class="size-big" ; style= "display: inline-block;">상품제목</p>
+			<p class="size-small"; style= "display: inline-block;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;가격 : 9,900원/개</p><br>
+			<p class="size-small">행운목은 <b><font color="red">천연 가습식물</font></b>로 유명하며, 작은 크기의 행운목은 수경재배로 매우 손쉽게 키울 수 있는 식물입니다.<br><br>이 식물은 큰 접시나 유리병에 행운목의 밑 부분이 어느정도 잠길 만큼 물을 채워주면 되는데요. <b><font color="red">공기정화는 물론, 실내에 공기의 습도를 유지</font></b>하는 천연 가습 역할도 있어 건조한 실내에 딱 맞는 식물입니다.<br><br>
+			물이 마르지 않도록 중간중간 물을 채워주고 10일에 한 번, 유리병과 돌을 깨끗하게 닦아주는 정도의 노력이면 무럭무럭 자랍니다. 또한 직사광선과 낮은 온도를 싫어하기 때문에 햇빛이 바로 닿지 않으면서 10도 이상의 온도를 유지할 수 있는 공간을 찾아 키우는 것이 좋습니다.</p><br>
+			<p class="size-big" ; style= "display: inline-block;">주문하기</p><br>
+	<form method="POST" action="/order">
+		<div style='line-height:300%'>
+			<div class = "box"; style= "display: inline-block;">
+				<div style = 'display : inline;float:left;width:100px'>주문자 성함 :</div>
+				<input id = "Name" name = "Name" class="form-control" type="text"; style= 'display: inline;float:left;width:400px'>
+			</div><br>
+			<div class = "box"; style= "display: inline-block;">
+				<div style = 'display : inline;float:left;width:100px'>수량 :</div>
+				<select id = "Number" name = "Number" class="form-control" type="text"; style= 'display: inline;float:left;width:400px'>
+				<option>
+
+				 <div class="dropdown-menu dropdown-menu-right">
+			    <button class="dropdown-item" type="button">-- 수량을 선택하세요 --</button>
+			  </div></option>
+			  <option>
+				 <div class="dropdown-menu dropdown-menu-right">
+			    <button class="dropdown-item" type="button">1개</button>
+			  </div></option>
+			   <option>
+				 <div class="dropdown-menu dropdown-menu-right">
+			    <button class="dropdown-item" type="button">2개</button>
+			  </div></option>
+			   <option>
+				 <div class="dropdown-menu dropdown-menu-right">
+			    <button class="dropdown-item" type="button">3개</button>
+			  </div></option>
+			  <option>
+				 <div class="dropdown-menu dropdown-menu-right">
+			    <button class="dropdown-item" type="button">4개</button>
+			  </div></div></option>
+				</select>
+			</div><br>
+			<div class = "box"; style= "display: inline-block;">
+				<div style = 'display : inline;float:left;width:100px'>주소 :</div>
+				<input id = "Address" name = "Address" class="form-control" type="text"; style= 'display: inline;float:left;width:400px'>
+			</div><br>
+			<div class = "box"; style= "display: inline-block;">
+				<div style = 'display : inline;float:left;width:100px'>전화번호 :</div>
+				<input id = "Phone" name = "Phone" class="form-control" type="text"; style= 'display: inline;float:left;width:400px'>
+			</div>
+		</div>
+	</form>
+			<br><br><br>
+			<div class = "position">
+			<button id = "button_click" onclick = "q1()" type="button" class="btn btn-success btn-lg" style = 'display : inline; background-color : green;border-radius: 10px;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;주문목록보기&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+			<input id = "button_click2" onclick = "q2()" type="submit" style = 'display : inline; font-weight : bold; height : 45px;background-color : black;border-radius: 10px;' value = "주문하기">
+			</div>
+		</div>
+	</div><br><br>
+	<div class = "wrap3">
+	<table class = "table" >
+
+		<thead id = "start" style = 'display : none'>
+			<tr bgcolor = #008080>
+				<th scope ="col" style = "font-size : 17px; font-weight : bold; color : white">이름</th>
+				<th scope ="col" style = "font-size : 17px; font-weight : bold; color : white">수량</th>
+				<th scope ="col" style = "font-size : 17px; font-weight : bold; color : white">주소</th>
+				<th scope ="col" style = "font-size : 17px; font-weight : bold; color : white">전화번호</th>
+			</tr>
+		</thead>
+
+		<tbody class = "wrap3" id = "contents">
+		</tbody>
+	</table>
+	</div>
+
+</body>
+</html>
